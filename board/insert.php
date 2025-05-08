@@ -30,12 +30,13 @@ include "include/header.php";
     <div class="row mb-3">
         <label for="content" class="col-sm-2 col-form-label">Content</label>
         <div class="col-sm-10">
-            <textarea type="text" class="form-control" id="content" name="content"></textarea>
+            <textarea type="text" class="form-control" id="content" name="content" rows="10"></textarea>
         </div>
     </div>
 
-    <div>
+    <div class="my-5 text-center">
         <button class="btn btn-primary">Write</button>
+        <a href="list.php" class="btn btn-secondary">목록으로</a>
     </div>
 </form>
 

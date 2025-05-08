@@ -14,14 +14,19 @@ $sql = "select * from board;";
 $result = mysqli_query($conn, $sql);
 if ($result) {
     echo "<table border='2' class='table table-dark table-striped-columns'>";
-    echo "<tr><th>번호</th><th>이름</th><th>제목</th><th>내용</th><th>날짜</th></tr>";
+    echo "<colgroup>";
+    echo "<col style='width: 10%;'>";
+    echo "<col style='width: 20%;'>";
+    echo "<col style='width: 45%;'>";
+    echo "<col style='width: 25%;'>";
+    echo "</colgroup>";
+    echo "<tr align='center'><th>번호</th><th>이름</th><th>제목</th><th>날짜</th></tr>";
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
-        echo "<td>" . ($row["num"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["subject"]) . "</td>";
-        echo "<td>" . htmlspecialchars($row["content"]) . "</td>";
-        echo "<td>" . ($row["regdate"]) . "</td>";
+        echo "<td align='center'>" . ($row["num"]) . "</td>";
+        echo "<td align='center'>" . htmlspecialchars($row["name"]) . "</td>";
+        echo "<td align='center'><a href='view.php?num=" . $row["num"] . "' style='color:white;'>" . htmlspecialchars($row["subject"]) . "</a></td>";
+        echo "<td align='center'>" . date("m-d H:i", strtotime($row["regdate"])) . "</td>";
         echo "</tr>";
     }
     echo "</table>";
@@ -31,6 +36,10 @@ if ($result) {
 
 mysqli_close($conn);
 ?>
+
+<div class="my-5 text-center">
+    <a href="insert.php" class="btn btn-dark">Write</a>
+</div>
 
 
 
